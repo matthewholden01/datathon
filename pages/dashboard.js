@@ -4,14 +4,7 @@ import {Row, Col, Carousel, Navbar, Card} from 'react-bootstrap'
 import React, {useState, useEffect} from 'react'
 import utils from '../styles/utils.module.css'
 
-export default function Dashboard({name = "User"}){
-    const [info, setInfo] = useState({})
-    
-    useEffect(() => {
-        fetch('/api/post_data').then(res=>res.json()).then(data=>{
-            setInfo(data)
-        });
-    }, []);
+export default function Dashboard(){
 
     return (
         <div className={utils.mainstuff}>
@@ -36,7 +29,7 @@ export default function Dashboard({name = "User"}){
                 <Card>
                     <Card.Header color="blue">
                     <Row className="justify-content-center">
-                        <h1>Welcome to your participant portal {name}</h1>
+                        <h1>Welcome to your participant portal Jessica!</h1>
                     </Row>
                     </Card.Header>
                     <Card.Body>
@@ -60,69 +53,75 @@ export default function Dashboard({name = "User"}){
                 <div className={utils.myContainer}>
                 <Row>
                     <Col>
+                        <Card className="justify-content-center">
+                            <h1>What we know about you!</h1>
+                        </Card>
                         <Carousel>
                             <Carousel.Item>
                                 <img
-                                className="d-block w-100"
-                                src="brain.png"
-                                alt="slide 1"
+                                    className="d-block w-100"
+                                    src="blue.jpg"
+                                    alt="First slide"
                                 />
                                 <Carousel.Caption>
-                                    <h3>Something here</h3>
+                                    <h3>You are a Computer Science and Engineering Major!</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="coding.jpg"
-                                    alt="slide 1"
+                                    src="blue.jpg"
+                                    alt="First slide"
                                 />
                                 <Carousel.Caption>
-                                 <h3>You are a Physics Major</h3>
+                                    <h3>You have competed in quite a few datathons and data science experience!</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="cool.jpg"
-                                    alt="slide 1"
+                                    src="blue.jpg"
+                                    alt="First slide"
                                 />
                                 <Carousel.Caption>
-                                <h3>You have experience</h3>
+                                    <h3>You are interested in Tech and you have a PhD at just 20 years old! That is quite impressive!</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>
                     </Col>
-                    <Col>
+                    <Col className="justify-content-center">
+                        <Card>
+                            <h1>Workshops for you!</h1>
+                        </Card>
                         <Carousel>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="brain.png"
+                                    src="matrix.jpg"
                                     alt="slide 1"
                                 />
                                 <Carousel.Caption>
-                                    <h3>Something here</h3>
+                                    <h3>Getting a Job in Data Science</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="coding.jpg"
+                                    src="other.jpg"
                                     alt="slide 1"
                                 />
                                 <Carousel.Caption>
-                                    <h3>You are a major</h3>
+                                    <h3>Machine Learning: Start Here</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="cool.jpg"
+                                    src="code2.jpg"
                                     alt="slide 1"
                                 />
                                 <Carousel.Caption>
-                                    <h3>You have no friends</h3>
+                                    <h3>Model Interpretability</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>
@@ -130,9 +129,7 @@ export default function Dashboard({name = "User"}){
                 </Row>
                 </div>
                 <Container className="justify-content-center">
-                    <Row>
-                        <h3>Data Will do all over down here</h3>
-                    </Row>
+
                 </Container>
             </body>
         </div>
