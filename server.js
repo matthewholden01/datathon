@@ -6,7 +6,8 @@ const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const bodyParser = require('body-parser')
+var bodyParser = require('body-parser')
+var cors = require('cors')
 
 const apiPaths = {
     '/api': {
@@ -20,11 +21,11 @@ const apiPaths = {
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
-app.use(bodyParser.json());
 
 app.prepare().then(() => {
     const server = express()
 
+    server.use(cors())
     if(isDevelopment){
         server.use('/api', createProxyMiddleware(apiPaths['/api']));
     }

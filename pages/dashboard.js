@@ -4,9 +4,17 @@ import {Row, Col, Carousel, Navbar, Card} from 'react-bootstrap'
 import React, {useState, useEffect} from 'react'
 import utils from '../styles/utils.module.css'
 
-export default function Dashboard({name = "Matthew"}){
+export default function Dashboard({name = "User"}){
+    const [info, setInfo] = useState({})
+    
+    useEffect(() => {
+        fetch('/api/post_data').then(res=>res.json()).then(data=>{
+            setInfo(data)
+        });
+    }, []);
+
     return (
-        <div fluid className={utils.mainstuff}>
+        <div className={utils.mainstuff}>
             <Head>
                 <title>Dashboard</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -23,6 +31,7 @@ export default function Dashboard({name = "Matthew"}){
                 </Navbar>
             </header>
             <body className={utils.dash_body}>
+
                 <br/>
                 <Card>
                     <Card.Header color="blue">
@@ -55,7 +64,7 @@ export default function Dashboard({name = "Matthew"}){
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100"
-                                src="#"
+                                src="brain.png"
                                 alt="slide 1"
                                 />
                                 <Carousel.Caption>
@@ -65,30 +74,58 @@ export default function Dashboard({name = "Matthew"}){
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="#"
+                                    src="coding.jpg"
                                     alt="slide 1"
                                 />
                                 <Carousel.Caption>
-                                 <h3>You are a major</h3>
+                                 <h3>You are a Physics Major</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src="#"
+                                    src="cool.jpg"
                                     alt="slide 1"
                                 />
                                 <Carousel.Caption>
-                                <h3>You have no friends</h3>
+                                <h3>You have experience</h3>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         </Carousel>
                     </Col>
                     <Col>
-
-                    </Col>
-                    <Col>
-
+                        <Carousel>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="brain.png"
+                                    alt="slide 1"
+                                />
+                                <Carousel.Caption>
+                                    <h3>Something here</h3>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="coding.jpg"
+                                    alt="slide 1"
+                                />
+                                <Carousel.Caption>
+                                    <h3>You are a major</h3>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="cool.jpg"
+                                    alt="slide 1"
+                                />
+                                <Carousel.Caption>
+                                    <h3>You have no friends</h3>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
                     </Col>
                 </Row>
                 </div>
