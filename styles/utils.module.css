@@ -1,0 +1,24 @@
+
+.dash_body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mainstuff {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.myContainer {
+    display: block !important;
+    justify-self: flex-start;
+    margin: 50px;
+    padding: 20px;
+    height: 200px;
+}
