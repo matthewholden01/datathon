@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
+@import url('https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css');
+
+.slanted_edge {
+    position: relative;
+    z-index: 1;
+}
+
+.slanted_edge:after {
+    background: inherit;
+    bottom: -70px;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(1.5deg);
+    transform-origin: 100%;
+    z-index: -1;
+    box-shadow: 0 4px 6px -6px black;
+}
+.slanted_all {
+    background: #7FDBFF;
+    color: #7FDBFF;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.slanted_all:before,
+.slanted_all:after{
+     background: inherit;
+     bottom: 0;
+     content: '';
+     display: block;
+     height: 50%;
+     left: 0;
+     position: absolute;
+     right: 0;
+     transform: skewY(-1.5deg);
+     transform-origin: 100%;
+     z-index: -1;
+ }
+.slanted_all:before{
+     top: 0;
+     transform: skewY(1.5deg);
+     transform-origin: 100% 0;
+ }
+.slanted_all:after{
+     bottom: 0;
+     transform: skewY(-1.5deg);
+     transform-origin: 100%;
+    box-shadow: 0 4px 6px -6px black;
+ }
+
+.slanted_all h1{
+    padding-top: 20px;
+    color: #111111;
+    font-family: 'Crete Round', serif;
+}
+
+.goodText {
+    color: #111111;
+    font-family: 'Crete Round', serif;
+}
+
+.perspectivetext {
+    color: white;
+    font-family: Arial;
+    font-size: 55px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.perspectiveline {
+    height: 55px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bigcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f1f1;
+    padding: 0;
+
+}
+.transP {
+    margin: 0;
+    height: 55px;
+    line-height: 55px;
+    transition: all 0.5s ease-in-out;
+}
+
+.perspectiveline:nth-child(odd) {
+    transform: skew(60deg, -30deg) scaleY(0.667);
+}
+
+.perspectiveline:nth-child(even) {
+    transform: skew(0deg, -30deg) scaleY(1.337);
+}
+
+.perspectivetext:hover p {
+    transform: translate(0, -55px);
+}
+
+.perspectiveline:nth-child(1) {
+    left: -20px;
+}
+
+.perspectiveline:nth-child(2) {
+    left: 16px;
+    background: #f07e6e;
+}
+
+.perspectiveline:nth-child(3) {
+    left: 48px;
+    background: #84cdfa;
+}
+
+.perspectiveline:nth-child(4) {
+    left: 80px;
+    background: #5ad1cd;
+}
+
+.perspectiveline:nth-child(5) {
+    left: 112px;
+}

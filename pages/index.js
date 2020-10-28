@@ -3,13 +3,12 @@ import Container from 'react-bootstrap/Container'
 import React, {useState, useEffect} from 'react'
 import LoadingButton from "../components/LoadingButton";
 import LoginForm from "../components/LoginForm";
-import Backend from "../components/backend";
 
 const Home = () => {
   return (
     <div className="container">
       <Head>
-        <title>Tamu Datathon Challeneg</title>
+        <title>Tamu Datathon Challenge</title>
         <link rel="icon" href="/favicon.ico" />
           <link
               rel="stylesheet"

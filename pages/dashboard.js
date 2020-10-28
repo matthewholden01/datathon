@@ -1,137 +1,161 @@
-import Head from 'next/head'
-import Container from 'react-bootstrap/Container'
-import {Row, Col, Carousel, Navbar, Card} from 'react-bootstrap'
-import React, {useState, useEffect} from 'react'
+import BarChart from "../components/BarChart";
+import Pie from "../components/Pie";
+import dash from "../styles/dashboard.module.css"
 import utils from '../styles/utils.module.css'
+import Counter from '../components/Counter'
+import SlidingText from "../components/SlidingText";
+import IconHolder from "../components/IconHolder";
+import {Button, Carousel} from 'react-bootstrap'
 
-export default function Dashboard(){
-
+export default function Dashboard({participantData}){
+    var sumOfPeople = 0;
+    for(var el in participantData.age){
+        if(participantData.age.hasOwnProperty(el)){
+            sumOfPeople += parseFloat(participantData.age[el]);
+        }
+    }
     return (
-        <div className={utils.mainstuff}>
-            <Head>
-                <title>Dashboard</title>
-                <link rel="icon" href="/favicon.ico" />
-                <link
-                    rel="stylesheet"
-                    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-                    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-                    crossOrigin="anonymous"
-                />
-            </Head>
-            <header>
-                <Navbar bg="light" variant="lightbox" expand="lg" className={utils.bar}>
-                    <Navbar.Brand href="#">TAMU-Datathon</Navbar.Brand>
-                </Navbar>
-            </header>
-            <body className={utils.dash_body}>
+        <div style={{ background:'#f1f1f1'}}>
+        <main style={{
+            backgroundImage: "url('/background.png')", maxWidth: "100%"}} className={dash.slanted_edge}>
+            <br/>
+            <div className="container-fluid row justify-content-center">
 
-                <br/>
-                <Card>
-                    <Card.Header color="blue">
-                    <Row className="justify-content-center">
-                        <h1>Welcome to your participant portal Jessica!</h1>
-                    </Row>
-                    </Card.Header>
-                    <Card.Body>
-                    <Row className="justify-content-center align-content-center">
-                        <h3>We are so excited that you are interested in joining us!</h3>
-                    </Row>
-                        <Row className="justify-content-center align-content-center">
-                         <br/>
-                         <blockquote className="blockquote mb-0">
-                            <h6>
-                                {' '}
-                                Based upon some of the information you gave us, we have collected some information that
-                            we think would give you the absolute best experience possible at the Texas A&M Datathon!{' '}
-                            </h6>
-                         </blockquote>
-                        </Row>
-                    </Card.Body>
-                </Card>
-                <br/>
-                <br/>
-                <div className={utils.myContainer}>
-                <Row>
-                    <Col>
-                        <Card className="justify-content-center">
-                            <h1>What we know about you!</h1>
-                        </Card>
-                        <Carousel>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="blue.jpg"
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>You are a Computer Science and Engineering Major!</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="blue.jpg"
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>You have competed in quite a few datathons and data science experience!</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="blue.jpg"
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>You are interested in Tech and you have a PhD at just 20 years old! That is quite impressive!</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        </Carousel>
-                    </Col>
-                    <Col className="justify-content-center">
-                        <Card>
-                            <h1>Workshops for you!</h1>
-                        </Card>
-                        <Carousel>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="matrix.jpg"
-                                    alt="slide 1"
-                                />
-                                <Carousel.Caption>
-                                    <h3>Getting a Job in Data Science</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="other.jpg"
-                                    alt="slide 1"
-                                />
-                                <Carousel.Caption>
-                                    <h3>Machine Learning: Start Here</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100"
-                                    src="code2.jpg"
-                                    alt="slide 1"
-                                />
-                                <Carousel.Caption>
-                                    <h3>Model Interpretability</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        </Carousel>
-                    </Col>
-                </Row>
+                <img src="logo.png"/>
+
+            </div>
+        </main>
+        <div className="container-fluid justify-content-center" style={{paddingBottom: 125, paddingTop: 150, width: '80%'}}>
+            <div className="row justify-content-around">
+                <div >
+                    <SlidingText />
                 </div>
-                <Container className="justify-content-center">
+                <div className="col">
+                    <div className="row justify-content-center">
+                        <h2 className={dash.goodText}>
+                            Data Doesn't discriminate!
+                        </h2>
+                    </div>
+                    <hr style={{width: 800}}/>
+                    <div className="row justify-content-center text-wrap">
+                        <h6 style={{width: 600}}>
+                            The TAMU datahon welcomes everyone to join the world of Data Science! Whether you are just entering high school,
+                            finishing your doctoral thesis, or you are sending your kids off to college yourself it is never too late to start
+                            your adventure into big data!
+                        </h6>
+                    </div>
+                    <div className="row justify-content-center align-items-baseline" style={{}}>
+                        <div className="col-3" style={{ height: 250, marginTop: 30,marginRight: 200}}>
+                            <Pie classData={participantData.class}/>
+                        </div>
+                        <div className="col-3" style={
+                        {
+                            height: 200,
+                            backgroundColor: "white",
+                            borderStyle: "solid",
+                            borderColor:"black",
+                            borderWidth:"2px",
+                            padding: 0,
+                            boxShadow: "-15px 15px 0 0 purple"}}>
+                        <BarChart ageData={participantData.age}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="container justify-content-center" style={{ paddingTop:30}}>
+            <div className="row justify-content-center" style={{paddingBottom: 30}}>
+                <h1 className={dash.goodText}>A Hackathon for Anyone and Everyone</h1>
+            </div>
+            <hr/>
 
-                </Container>
-            </body>
+            <div className="row justify-content-center">
+                <Counter final={(participantData.experience['0'] / sumOfPeople) * 100} years={'< 1 Year'} val = {utils.countervalue} content={utils.countercontent} icon ={utils.countericon} style={`${utils.counter}`}/>
+                <Counter final={(participantData.experience['1'] / sumOfPeople) * 100} years={'1 Years'} val = {utils.countervalue} content={utils.countercontent} icon ={utils.countericon} style={`${utils.counter} ${utils.blue}`} />
+                <Counter final={(participantData.experience['2'] / sumOfPeople) * 100} years={'2 Years'} val = {utils.countervalue} content={utils.countercontent} icon ={utils.countericon} style={`${utils.counter} ${utils.purple}`}/>
+                <Counter final={(participantData.experience['3'] / sumOfPeople) * 100} years={'3 Years'} val = {utils.countervalue} content={utils.countercontent} icon ={utils.countericon} style={`${utils.counter} ${utils.ice}`}/>
+                <Counter final={(participantData.experience['4'] / sumOfPeople) * 100} years={'4+ Years'} val = {utils.countervalue} content={utils.countercontent} icon ={utils.countericon} style={`${utils.counter} ${utils.orange}`}/>
+            </div>
+            </div>
+        <div className="container-fluid justify-content-center text-center" style={{padding:100}}>
+            <div className={dash.goodText}style={{paddingBottom: 100}}>
+                <h1>A Variety of Technical Experience and Skills</h1>
+                <br/>
+                <hr/>
+            </div>
+            <div className="row">
+                <div className={`col ${utils.animP}`}>
+                <IconHolder icon={'/icons/Excel.svg'} style={utils.moving}/>
+                </div>
+                <div className={`col ${utils.animP}`}>
+                    <IconHolder icon={'/icons/Python.svg'}/>
+                </div>
+                <div className={`col ${utils.animP}`}>
+                    <IconHolder icon={'/icons/R.svg'}/>
+                </div>
+                <div className={`col ${utils.animP}`}>
+                    <IconHolder icon={'/icons/Keras.svg'}/>
+                </div>
+                <div className={`col ${utils.animP}`}>
+                    <IconHolder icon={'/icons/full_stack.svg'}/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div className="row">
+                <div className={`col ${utils.animP2}`}>
+                    <IconHolder icon={'/icons/SQL.svg'}/>
+                </div>
+                <div className={`col ${utils.animP2}`}>
+                    <IconHolder icon={'/icons/NumPy.svg'}/>
+                </div>
+                <div className={`col ${utils.animP2}`}>
+                    <IconHolder icon={'/icons/Pandas.svg'}/>
+                </div>
+                <div className={`col ${utils.animP2}`}>
+                    <IconHolder icon={'/icons/Pytorch.svg'}/>
+                </div>
+                <div className={`col ${utils.animP2}`}>
+                    <IconHolder icon={'/icons/cloud.svg'}/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div className="row">
+                <div className={`col ${utils.animP3}`}>
+                    <IconHolder icon={'/icons/Scikit-learn.svg'}/>
+                </div>
+                <div className={`col ${utils.animP3}`}>
+                    <IconHolder icon={'/icons/dev_ops.svg'}/>
+                </div>
+                <div className={`col ${utils.animP3}`}>
+                    <IconHolder icon={'/icons/Tableau.svg'}/>
+                </div>
+                <div className={`col ${utils.animP3}`}>
+                    <IconHolder icon={'/icons/TensorFlow.svg'}/>
+                </div>
+                <div className={`col ${utils.animP3}`}>
+                    <IconHolder icon={'/icons/MATLAB.svg'}/>
+                </div>
+            </div>
+        </div>
+        <div className="jumbotron" style={{paddingTop: 50}}>
+            <div className="row justify-content-center" style={{paddingBottom: 20}}>
+                <h3>Click the Button below to get Workshop, Team, and project Recommendations</h3>
+            </div>
+            <div className="row justify-content-center">
+                <Button>Click me!</Button>
+            </div>
+        </div>
         </div>
     )
+}
+
+export async function getStaticProps(){
+    const res = await fetch('http://localhost:5000/participant_data')
+    const participantData = await res.json()
+
+    return { props: { participantData } }
 }
